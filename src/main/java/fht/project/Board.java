@@ -28,4 +28,18 @@ public class Board {
         System.out.println("-------------");
     }
 
+    public char[][] getCells() {
+        return cells;
+    }
+
+    public boolean isFull() {
+        for (char[] cell : cells) {
+            for (char c : cell) {
+                if (c == '\u0000') {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
 }

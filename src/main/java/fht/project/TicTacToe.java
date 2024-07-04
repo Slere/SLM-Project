@@ -47,12 +47,22 @@ public class TicTacToe {
 
             if (board.isCellEmpty(row, column)) {
                 board.place(row, column, currentPlayer.getMarker());
+                if (hasWinner()) {
+                    System.out.println(currentPlayer.getMarker() + " hat gewonnen");
+                    break;
+                }
+
+                if (board.isFull()) {
+                    System.out.println("Unentschieden");
+                    break;
+                }
                 switchCurrentPlayer();
             } else {
                 System.out.println("Zelle ist belegt");
             }
 
         }
+        board.print();
     }
 
     private void switchCurrentPlayer() {
@@ -62,5 +72,27 @@ public class TicTacToe {
             currentPlayer = player1;
         }
 
+    }
+
+    public boolean hasWinner() {
+        char[][] cells = board.getCells();
+
+        for (int i = 0; i < 3; i++) {
+            if (cells[i][0] != '\0' && cells[i][0] == cells[i][1] && cells[i][1] == cells[i][2]) {
+                return true;
+            }
+            if (cells[0][i] != '\0' && cells[0][i] == cells[1][i] && cells[1][i] == cells[2][i]) {
+                return true;
+            }
+        }
+
+        if (cells[0][0] != '\0' && cells[0][0] == cells[1][1] && cells[1][1] == cells[2][2]) {
+            return true;
+        }
+        if (cells[0][2] != '\0' && cells[0][2] == cells[1][1] && cells[1][1] == cells[2][0]) {
+            return true;
+        }
+
+        return false;
     }
 }
