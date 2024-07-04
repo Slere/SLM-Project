@@ -42,4 +42,8 @@ public class Board {
         }
         return true;
     }
+
+    public void clear(){
+        this.cells = new char[3][3];
+    }
 }

@@ -63,6 +63,16 @@ public class TicTacToe {
 
         }
         board.print();
+        System.out.println("nochmal spielen?(y/n)");
+        if (sc.hasNextLine()) {
+            sc.nextLine();
+        }
+
+        if (sc.nextLine().trim().equalsIgnoreCase("y")) {
+            board.clear();
+            start();
+        }
+
     }
 
     private void switchCurrentPlayer() {
